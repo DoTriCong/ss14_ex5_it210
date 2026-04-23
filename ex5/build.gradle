@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '4.0.5'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.restaurant'
+version = '0.0.1-SNAPSHOT'
+description = 'ex5'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+    compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    runtimeOnly 'com.mysql:mysql-connector-j'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-data-jdbc-test'
+    testCompileOnly 'org.projectlombok:lombok'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+    implementation("org.hibernate.orm:hibernate-core:7.3.0.Final")
+    implementation("org.springframework:spring-orm:7.0.6")
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
